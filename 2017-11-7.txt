@@ -1,0 +1,2 @@
+createElement是document的方法,其他元素不能调用
+如果createElement生成的元素没有添加到其他元素中,那么新创建的元素就是"孤魂野鬼"，不会显示。

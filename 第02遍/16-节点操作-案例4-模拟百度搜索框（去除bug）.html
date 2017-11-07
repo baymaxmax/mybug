@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百度一下,你就知道</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        body {
+            height: 50000px;
+        }
+        .box {
+            width: 600px;
+            margin: 200px auto;
+        }
+        input {
+            width: 500px;
+            height: 30px;
+            padding: 5px;
+            font-size: 22px;
+            outline-style: none;
+        }
+        button {
+            width: 80px;
+            height: 43px;
+            font-size: 22px;
+        }
+        ul {
+            width: 492px;
+            padding: 10px;
+            border: 1px solid red;
+            border-top: 0;
+        }
+        li {
+            cursor: pointer;
+            font: 20px/26px "simsun";
+        }
+        li:hover {
+            background-color: red;
+        }
+    </style>
+
+  <script>
+
+    var arr = ["a","aa","aaa","aaaa","ab","abc","abcd","abcde","abcdef","bb","bbc"];
+
+    var inp = document.getElementsByTagName('input')[0];
+
+    inp.onkeyup = function () {
+      var newArr=[];
+      for (var i= 0;i<arr.length;i++){
+        if(0==arr[i].indexOf(inp.value)){
+          newArr[newArr.length]=arr[i];
+        }
+      }
+    }
+
+
+
+
+
+  </script>
+</head>
+<body>
+
+    <div class="box">
+        <input type="text"/>
+        <button>搜索</button>
+    </div>
+
+</body>
+</html>

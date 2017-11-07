@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>移动水果</title>
+    <style>
+        select {
+            width: 200px;
+            height: 300px;
+            font-size: 22px;
+            background-color: #80ff45;
+        }
+    </style>
+
+  <script>
+    window.onload = function () {
+      //获取元素
+      var sel1 = document.getElementById('sel1');
+      var sel2 = document.getElementById('sel2');
+//      var optArr = document.getElementsByTagName('option');
+      var btn1 = document.getElementsByTagName('button')[0];
+      var btn2 = btn1.nextElementSibling;
+      var btn3 = btn2.nextElementSibling;
+      var btn4 = btn3.nextElementSibling;
+      
+      //点击全右按钮把sel1中的元素全部添加到sel2中
+      btn1.onclick = function () {
+        moveAll(sel1,sel2);
+      }
+      //点击全左按钮把sel2中的元素全部添加到sel1中
+      btn2.onclick = function () {
+        moveAll(sel2,sel1);
+      }
+
+      //封装一个函数，实现  将第一个元素中的子元素 全部移动到第二个元素中
+      function moveAll(ele1,ele2) {
+        var optArr = ele1.children;
+        for(var i=0;i<ele1.length;i++){
+          ele2.appendChild(optArr[i--]);
+        }
+      }
+
+
+      btn3.onclick = function () {
+        moveSelected(sel1,sel2);
+      }
+      btn4.onclick = function () {
+        moveSelected(sel2,sel1);
+      }
+
+      //封装一个函数，实现将第一个元素中option 属性为selected的元素移动到第二个元素中
+      function moveSelected(ele1,ele2) {
+        var optArr = ele1.children;
+        for (var i = 0;i<optArr.length;i++){//遍历ele1的子元素
+          if (true==optArr[i].selected){  //子元素被选中
+            optArr[i].selected = false;
+            ele2.appendChild(optArr[i--]);  //每次移动元素都要让i--,因为有新的元素补上来了,保证遍历所有元素
+
+          }
+        }
+      }
+      
+    }
+  </script>
+</head>
+<body>
+    <select name="" id="sel1" size="4" multiple>
+        <option value="">香蕉</option>
+        <option value="">大鸭梨</option>
+        <option value="">苹果</option>
+        <option value="">大西瓜</option>
+    </select>
+    
+    <button>&gt;&gt;&gt;</button>
+    <button>&lt;&lt;&lt;</button>
+    <button>&gt;</button>
+    <button>&lt;</button>
+    <select name="" id="sel2" size="4" multiple>
+
+    </select>
+
+
+</body>
+</html>
